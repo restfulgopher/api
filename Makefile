@@ -15,8 +15,8 @@ test: ## run api unit tests
 
 .PHONY: publish
 publish: ## publish images on docker hub
-	@docker-compose build api stub_api nginx
-	@docker push alesr/betalo-api alesr/betalo-stub_api alesr/betalo-nginx
+	@docker-compose build api test stub_api spec nginx
+	@docker-compose push api test stub_api spec nginx
 
 .PHONY: run
 run: ## start api, stub_api and nginx as reverse proxy
