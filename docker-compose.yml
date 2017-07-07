@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+
+  # api test
+  test:
+    container_name: api-test
+    image: alesr/betalo-api-test
+    build:
+      context: .
+      dockerfile: resources/api/test/Dockerfile
+
+  # api production
+  api:
+    container_name: api
+    image: alesr/betalo-api
+    build:
+      context: .
+      dockerfile: resources/api/prod/Dockerfile
+
+  # stub api server
+  stub_api:
+    container_name: stub
+    image: alesr/betalo-stub_api
+    build:
+      context: .
+      dockerfile: resources/stub/Dockerfile
+
+  # api spec
+  spec:
+    container_name: spec
+    image: alesr/betalo-api-spec
+    build:
+      context: .
+      dockerfile: resources/spec/Dockerfile
+
+  # swagger editor
+  editor:
+    container_name: editor
+    image: swaggerapi/swagger-editor
+    ports:
+      - "8080:8080"
+
+  # reverse proxy
+  nginx:
+    container_name: nginx
+    image: alesr/betalo-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - api:api
+      - stub_api:stub_api
+      - spec:spec
+    depends_on:
+      - api
+      - stub_api
+      - spec
+    build:
+      context: .
+      dockerfile: resources/nginx/Dockerfile
