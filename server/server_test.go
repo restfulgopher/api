@@ -12,7 +12,9 @@ func TestServe(t *testing.T) {
 	server := httptest.NewServer(serverEngine())
 	defer server.Close()
 
+	// fixes weird double ':' problem
 	port := server.URL[len(server.URL)-5:]
+
 	_, err := net.DialTimeout("tcp", "localhost:"+port, timeOut)
 	if err != nil {
 		t.Errorf("failed to dial server: %s", err)

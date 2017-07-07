@@ -1,7 +1,6 @@
 package server
 
 import (
-	"log"
 	"net/http"
 
 	"gopkg.in/gin-gonic/gin.v1"
@@ -11,8 +10,6 @@ import (
 // and call the validate function to check if it is a valid iban
 func validateHandler(c *gin.Context) {
 	iban := c.Param("iban")
-
-	log.Println("prod api")
 
 	iban, err := sanitize(iban)
 	if err != nil {

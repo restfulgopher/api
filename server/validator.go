@@ -39,7 +39,7 @@ func validate(iban string) (ValidationResponse, error) {
 	return result, nil
 }
 
-// Decode response data into ValidationResponse struct
+// decode response data into ValidationResponse struct
 func decode(data io.Reader) (ValidationResponse, error) {
 	var validationResp ValidationResponse
 
