@@ -1,0 +1,77 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a sample RESTful API"
+  version: "1.0.0"
+  title: "BETALOTEST API"
+  contact:
+    email: "alessandro.resta@gmail.com"
+  license:
+    name: "MIT"
+    url: "https://opensource.org/licenses/MIT"
+host: "0.0.0.0:8081"
+basePath: "/stub/v1"
+schemes:
+- "http"
+paths:
+  /validate/{iban}:
+    get:
+      tags:
+      - "iban"
+      summary: "validate iban endpoint"
+      operationId: "validateiban"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "iban"
+        in: "path"
+        description: "International Bank Account Number (IBAN)"
+        required: true
+        type: "string"
+        default: "DE44500105175407324931"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        404:
+          description: "Not Found"
+          schema:
+            $ref: "#/definitions/inline_response_404"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/inline_response_404"
+      x-swagger-router-controller: "Iban"
+definitions:
+  Error:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+  inline_response_200:
+    properties:
+      iban:
+        type: "string"
+        example: "DE44500105175407324931"
+      valid:
+        type: "boolean"
+  inline_response_404:
+    properties:
+      status:
+        type: "string"
+responses:
+  NotFoundError:
+    description: "Not Found"
+    schema:
+      type: "object"
+      properties:
+        status:
+          type: "string"
+  GeneralError:
+    description: "Internal Server Error"
+    schema:
+      type: "object"
+      properties:
+        status:
+          type: "string"
