@@ -34,3 +34,13 @@ editor/run: ## start swagger editor container
 .PHONY: editor/stop
 editor/stop: ## stop and remove swagger editor container
 	@docker-compose rm -fsv editor
+
+.PHONY: terraform/apply
+terraform/apply: publish ## create remote vm with terraform and deploy services
+	@terraform validate terraform/
+	@terraform plan terraform/
+	@terraform apply terraform/
+
+.PHONY: terraform/destroy
+terraform/destroy: ## destroy remote vm with terraform
+	@terraform destroy -force terraform/
