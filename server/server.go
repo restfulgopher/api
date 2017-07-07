@@ -7,7 +7,6 @@ import (
 )
 
 // Serve triggers the server initialization
-// serving on :8000 by default
 func Serve(addr string) {
 	if err := serverEngine().Run(addr); err != nil {
 		log.Fatalf("failed to start server on port '%s': %s", addr, err)
