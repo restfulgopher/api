@@ -12,6 +12,6 @@ ADD ./resources/nginx/nginx.conf /etc/nginx/nginx.conf
 ADD ./resources/nginx/ssl/crt/server.crt /etc/nginx/ssl/crt/server.crt
 ADD ./resources/nginx/ssl/key/server.key /etc/nginx/ssl/key/server.key
 
-EXPOSE 80 443
+EXPOSE 443
 
 ENTRYPOINT ["nginx"]
