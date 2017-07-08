@@ -9,8 +9,8 @@ info:
   license:
     name: "MIT"
     url: "https://opensource.org/licenses/MIT"
-host: "0.0.0.0:8081"
-basePath: "/stub/v1"
+host: "api.alesr.me:80"
+basePath: "/v1"
 schemes:
 - "http"
 paths:
