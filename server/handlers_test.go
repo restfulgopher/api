@@ -42,6 +42,6 @@ func TestValidateResponseHandler(t *testing.T) {
 	}
 
 	if expectedResponse != b.String() {
-		t.Errorf("expected response: %s, observed: %s", expectedResponse, b.String())
+		t.Errorf("expected response: %q, observed: %q", expectedResponse, b.String())
 	}
 }
