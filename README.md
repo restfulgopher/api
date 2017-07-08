@@ -23,8 +23,8 @@ Build and start services for reverse proxying, documentation, stub and productio
 #### Using the services:
 
 - `curl -k -X GET 'Accept: application/json' 'https://127.0.0.1/v1/validate/DE44500105175407324931'` : a request for the prod api
-- `curl -k -X GET 'Accept: application/json' 'https://127.0.0.1/stub/v1/validate/DE44500105175407324931'` : a request for the stub api
-- `https://127.0.0.1/docs`                                    : api documentation. type `/spec`in the text field to see the api specification
+- `curl -X GET 'Accept: application/json' 'http://127.0.0.1/v1/validate/DE44500105175407324931'` : a request for the stub api
+- `http://127.0.0.1/docs`                                    : api documentation
 
 To stop all services and clean the environment run `make stop`.
 
@@ -44,6 +44,7 @@ With the ID key in hand, place it on `main.tf` and run `make terraform/apply`.
 ```
 resource "digitalocean_droplet" "vpn" {
   ssh_keys           = [012345]
+  ...
 ```
 
 To destroy the droplets, run `make terraform/destroy`.
