@@ -1,6 +1,6 @@
 # API [![Build Status](https://travis-ci.org/betalotest/api.svg?branch=master)](https://travis-ci.org/betalotest/api)
 
-## WHATIS
+## WHAT IS
 
 The API repository contains an implementation for a simple REST API written in GO, with a single endpoint for validating International Banking Numbers (IBAN), used for international transactions.
 
@@ -76,6 +76,7 @@ resource "digitalocean_droplet" "vpn" {
 
 To deploy this application under your own domain you should edit or remove the following code block at `/terraform/main.tf`.
 
+The `make terraform/apply` build and push Docker images to Docker Hub before starting the provisioning. You may have to push the images to your own Docker Hub reposistory.
 
 To destroy the droplets, run `make terraform/destroy`.
 
@@ -87,12 +88,12 @@ Run `make help` from the project root to list all available commands:
 ------------------------------------------------------------------------
 BETALOTEST API
 ------------------------------------------------------------------------
+api/run                        start api, stub_api and nginx as reverse proxy
+api/stop                       stop and remove services containers
+api/test                       run api unit tests
 editor/run                     start swagger editor container
 editor/stop                    stop and remove swagger editor container
 publish                        publish images on docker hub
-run                            start api, stub_api and nginx as reverse proxy
-stop                           stop and remove services containers
 terraform/apply                create remote vm with terraform and deploy services
 terraform/destroy              destroy remote vm with terraform
-test                           run api unit tests
 ```
