@@ -41,3 +41,7 @@ resource "digitalocean_droplet" "api" {
   }
 }
 
+resource "digitalocean_domain" "api" {
+  name       = "api.alesr.me"
+  ip_address = "${digitalocean_droplet.api.ipv4_address}"
+}
