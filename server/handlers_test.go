@@ -25,7 +25,10 @@ func TestValidateHandlerStatusCode(t *testing.T) {
 }
 
 func TestValidateResponseHandler(t *testing.T) {
-	expectedResponse := "{\"iban\":\"123\",\"valid\":false}\n"
+	expectedResponses := []string{
+		"{\"iban\":\"123\",\"valid\":false}",
+		"{\"iban\":\"123\",\"valid\":false}\n", // zsh
+	}
 
 	server := httptest.NewServer(serverEngine())
 	defer server.Close()
@@ -41,7 +44,8 @@ func TestValidateResponseHandler(t *testing.T) {
 		t.Errorf("failed to copy response body: %s", err)
 	}
 
-	if expectedResponse != b.String() {
-		t.Errorf("expected response: %q, observed: %q", expectedResponse, b.String())
+	if expectedResponses[0] != b.String() && expectedResponses[1] != b.String() {
+		t.Errorf("expected response: %q or %q, observed: %q",
+			expectedResponses[0], expectedResponses[0], b.String())
 	}
 }
