@@ -46,6 +46,7 @@ services:
     container_name: nginx
     image: alesr/betalotest-nginx
     ports:
+      - "80:80"
       - "443:443"
     links:
       - api:api
