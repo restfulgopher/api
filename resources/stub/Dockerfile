@@ -4,6 +4,6 @@ WORKDIR root/
 
 ADD swagger/stub/ .
 
-EXPOSE 8081
+EXPOSE 80
 
 ENTRYPOINT ["npm", "start"]
