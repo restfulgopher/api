@@ -28,7 +28,8 @@ func validate(iban string) (ValidationResponse, error) {
 	// Send the request
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return ValidationResponse{}, fmt.Errorf("could not process get request to openiban api: %s", err)
+		return ValidationResponse{},
+			fmt.Errorf("could not process get request to openiban api: %s", err)
 	}
 	defer resp.Body.Close()
 
@@ -45,7 +46,8 @@ func decode(data io.Reader) (ValidationResponse, error) {
 
 	dec := json.NewDecoder(data)
 	if err := dec.Decode(&validationResp); err != nil {
-		return ValidationResponse{}, fmt.Errorf("could not decode response from openiban to validation result map: %s", err)
+		return ValidationResponse{},
+			fmt.Errorf("could not decode response from openiban to validation result map: %s", err)
 	}
 	return validationResp, nil
 }
