@@ -9,22 +9,22 @@ help:
 	@echo "------------------------------------------------------------------------"
 	@grep -E '^[a-zA-Z0-9_/%\-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: test
-test: ## run api unit tests
-	@docker-compose up --build test
-
 .PHONY: publish
 publish: ## publish images on docker hub
 	@docker-compose build api test stub_api spec nginx
 	@docker-compose push api test stub_api spec nginx
 
-.PHONY: run
-run: ## start api, stub_api and nginx as reverse proxy
+.PHONY: api/test
+api/test: ## run api unit tests
+	@docker-compose up --build test
+
+.PHONY: api/run
+api/run: ## start api, stub_api and nginx as reverse proxy
 	@docker-compose build api spec stub_api
 	@docker-compose up -d --build nginx
 
-.PHONY: stop
-stop: ## stop and remove services containers
+.PHONY: api/stop
+api/stop: ## stop and remove services containers
 	@docker-compose rm -fsv nginx api spec stub_api
 
 .PHONY: editor/run
