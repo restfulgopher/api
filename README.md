@@ -2,9 +2,27 @@
 
 ## WHATIS
 
-The API repository contains an implementation for a simple RESTful API written in GO, with a single endpoint for validating International Banking Numbers (IBAN), which are used for international transactions.
+The API repository contains an implementation for a simple REST API written in GO, with a single endpoint for validating International Banking Numbers (IBAN), used for international transactions.
 
-The validation of the IBAN provided by the user is performed by the OPENIBAN API. This implementation does not guarantee any reliability on the data returned by the external service.
+The API design, documentation, and stub server were implemented using Swagger Editor and Swagger UI.
+
+Docker and Terraform were used for provisioning and deployment. As NGINX was used for reverse proxying.
+
+All services are available on Digital Ocean for a limited period.
+
+The [iban.com API](https://www.iban.com/validation-api-v2.html) performs the validation of the IBAN provided by the user. This implementation does not guarantee any reliability on the data returned by the external service.
+
+API SPECIFICATION
+
+	http://api.alesr.me/docs
+
+PRODUCTION API (GO)
+
+	curl -k -X GET 'Accept: application/json' 'https://api.alesr.me/v1/validate/DE44500105175407324931'
+
+STUB API
+
+	curl -X GET 'Accept: application/json' 'http://api.alesr.me/v1/validate/DE44500105175407324931'
 
 ## HOWTO
 
@@ -20,11 +38,19 @@ After downloading the source code for the stub API, place it at `/swagger/stub/`
 
 Build and start services for reverse proxying, documentation, stub and production API.
 
-#### Using the services:
+#### Using the services (local):
 
-- `curl -k -X GET 'Accept: application/json' 'https://127.0.0.1/v1/validate/DE44500105175407324931'` : a request for the prod api
-- `curl -X GET 'Accept: application/json' 'http://127.0.0.1/v1/validate/DE44500105175407324931'` : a request for the stub api
-- `http://127.0.0.1/docs`                                    : api documentation
+PRODUCTION API
+
+	curl -k -X GET 'Accept: application/json' 'https://127.0.0.1/v1/validate/DE44500105175407324931'
+
+STUB API
+
+	curl -X GET 'Accept: application/json' 'http://127.0.0.1/v1/validate/DE44500105175407324931'
+
+API SPECIFICATION
+
+	http://127.0.0.1/docs
 
 To stop all services and clean the environment run `make stop`.
 
@@ -32,7 +58,8 @@ To stop all services and clean the environment run `make stop`.
 
 Build and push images to DockerHub, and use Terraform for provisioning an Digital Ocean droplet and deploy services.
 
-Note that you must add create a Digital Ocean API token and set it on your .bashrc `export DIGITALOCEAN_TOKEN="Your API TOKEN"`
+Note that to use Terraform you must create a Digital Ocean API token and set it on your .bashrc `export DIGITALOCEAN_TOKEN="Your API TOKEN"`
+
 You will also need the API token to retrieve you SSH key ID and past it in the Terraform main file.
 
 ```
@@ -47,9 +74,15 @@ resource "digitalocean_droplet" "vpn" {
   ...
 ```
 
+To deploy this application under your own domain you should edit or remove the following code block at `/terraform/main.tf`.
+
+
 To destroy the droplets, run `make terraform/destroy`.
 
 ## AVAILABLE COMMANDS:
+
+Run `make help` from the project root to list all available commands:
+
 ```
 ------------------------------------------------------------------------
 BETALOTEST API
@@ -59,5 +92,7 @@ editor/stop                    stop and remove swagger editor container
 publish                        publish images on docker hub
 run                            start api, stub_api and nginx as reverse proxy
 stop                           stop and remove services containers
+terraform/apply                create remote vm with terraform and deploy services
+terraform/destroy              destroy remote vm with terraform
 test                           run api unit tests
 ```
