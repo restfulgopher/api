@@ -10,7 +10,7 @@ Docker and Terraform were used for provisioning and deployment. As NGINX was use
 
 All services are available on Digital Ocean for a limited period.
 
-The [iban.com API](https://www.iban.com/validation-api-v2.html) performs the validation of the IBAN provided by the user. This implementation does not guarantee any reliability on the data returned by the external service.
+The [OpenIban API](https://openiban.com/) performs the validation of the IBAN provided by the user. This implementation does not guarantee any reliability on the data returned by the external service.
 
 API SPECIFICATION
 

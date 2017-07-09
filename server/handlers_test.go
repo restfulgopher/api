@@ -26,8 +26,8 @@ func TestValidateHandlerStatusCode(t *testing.T) {
 
 func TestValidateResponseHandler(t *testing.T) {
 	expectedResponses := []string{
-		"{\"iban\":\"123\",\"valid\":false}",
-		"{\"iban\":\"123\",\"valid\":false}\n", // zsh
+		"{\"iban\":\"123\",\"valid\":false}", // zsh
+		"{\"iban\":\"123\",\"valid\":false}\n",
 	}
 
 	server := httptest.NewServer(serverEngine())

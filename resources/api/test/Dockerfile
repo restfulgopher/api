@@ -1,6 +1,6 @@
 FROM golang:1.8-stretch
 
-WORKDIR $GOPATH/src/github.com/betalotedt/api/
+WORKDIR $GOPATH/src/github.com/betalotest/api/
 
 ADD main.go .
 

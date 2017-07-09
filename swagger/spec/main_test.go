@@ -17,7 +17,7 @@ func TestIndex(t *testing.T) {
 	// record the response
 	rr := httptest.NewRecorder()
 
-	// Start test server prepared to receive request on 'ping' endpoint
+	// Start test server prepared to receive request on 'root' endpoint
 	handler := http.HandlerFunc(indexHandler)
 	handler.ServeHTTP(rr, req)
 
