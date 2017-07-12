@@ -18,11 +18,11 @@ API SPECIFICATION
 
 PRODUCTION API (GO)
 
-	curl -k -X GET 'Accept: application/json' 'https://api.alesr.me/v1/validate/DE44500105175407324931'
+	curl -k -X GET 'Accept: application/json' 'https://api.alesr.me/v1/iban/valid/DE44500105175407324931'
 
 STUB API
 
-	curl -X GET 'Accept: application/json' 'http://api.alesr.me/v1/validate/DE44500105175407324931'
+	curl -X GET 'Accept: application/json' 'http://api.alesr.me/v1/iban/valid/DE44500105175407324931'
 
 ## HOWTO
 
@@ -42,11 +42,11 @@ Build and start services for reverse proxying, documentation, stub and productio
 
 PRODUCTION API
 
-	curl -k -X GET 'Accept: application/json' 'https://127.0.0.1/v1/validate/DE44500105175407324931'
+	curl -k -X GET 'Accept: application/json' 'https://127.0.0.1/v1/iban/valid/DE44500105175407324931'
 
 STUB API
 
-	curl -X GET 'Accept: application/json' 'http://127.0.0.1/v1/validate/DE44500105175407324931'
+	curl -X GET 'Accept: application/json' 'http://127.0.0.1/v1/iban/valid/DE44500105175407324931'
 
 API SPECIFICATION
 
