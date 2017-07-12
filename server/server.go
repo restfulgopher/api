@@ -18,7 +18,8 @@ func serverEngine() *gin.Engine {
 
 	// Register resource handlers
 	v1 := r.Group("/" + apiVersion())
-	v1.GET("/validate/:iban", validateHandler)
+	iban := v1.Group("")
+	iban.GET("/iban/valid/:iban", validHandler)
 	return r
 }
 

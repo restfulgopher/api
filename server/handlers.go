@@ -6,9 +6,9 @@ import (
 	"gopkg.in/gin-gonic/gin.v1"
 )
 
-// validateHandler receives an iban number from the client
+// validHandler receives an iban number from the client
 // and call the validate function to check if it is a valid iban
-func validateHandler(c *gin.Context) {
+func validHandler(c *gin.Context) {
 	iban := c.Param("iban")
 
 	iban, err := sanitize(iban)

@@ -8,13 +8,13 @@ import (
 	"testing"
 )
 
-func TestValidateHandlerStatusCode(t *testing.T) {
+func TestValidHandlerStatusCode(t *testing.T) {
 	expectedStatus := 200
 
 	server := httptest.NewServer(serverEngine())
 	defer server.Close()
 
-	resp, err := http.Get(server.URL + "/v1/validate/123")
+	resp, err := http.Get(server.URL + "/v1/iban/valid/123")
 	if err != nil {
 		t.Errorf("failed to execute GET request: %s", err)
 	}
@@ -24,7 +24,7 @@ func TestValidateHandlerStatusCode(t *testing.T) {
 	}
 }
 
-func TestValidateResponseHandler(t *testing.T) {
+func TestValidResponseHandler(t *testing.T) {
 	expectedResponses := []string{
 		"{\"iban\":\"123\",\"valid\":false}", // zsh
 		"{\"iban\":\"123\",\"valid\":false}\n",
@@ -33,7 +33,7 @@ func TestValidateResponseHandler(t *testing.T) {
 	server := httptest.NewServer(serverEngine())
 	defer server.Close()
 
-	resp, err := http.Get(server.URL + "/v1/validate/123")
+	resp, err := http.Get(server.URL + "/v1/iban/valid/123")
 	if err != nil {
 		t.Errorf("failed to execute GET request: %s", err)
 	}
