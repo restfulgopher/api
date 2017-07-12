@@ -5,7 +5,7 @@ exports.validateiban = function(args, res, next) {
    * validate iban endpoint
    *
    * iban String International Bank Account Number (IBAN)
-   * returns inline_response_200
+   * returns inline_response_200_1
    **/
   var examples = {};
   examples['application/json'] = {

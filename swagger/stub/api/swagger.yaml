@@ -10,11 +10,11 @@ info:
     name: "MIT"
     url: "https://opensource.org/licenses/MIT"
 host: "api.alesr.me:80"
-basePath: "/v1"
+basePath: "/v1/iban"
 schemes:
 - "http"
 paths:
-  /validate/{iban}:
+  /valid/{iban}:
     get:
       tags:
       - "iban"
@@ -33,15 +33,15 @@ paths:
         200:
           description: "OK"
           schema:
-            $ref: "#/definitions/inline_response_200"
+            $ref: "#/definitions/inline_response_200_1"
         404:
           description: "Not Found"
           schema:
-            $ref: "#/definitions/inline_response_404"
+            $ref: "#/definitions/inline_response_404_1"
         500:
           description: "Internal Server Error"
           schema:
-            $ref: "#/definitions/inline_response_404"
+            $ref: "#/definitions/inline_response_404_1"
       x-swagger-router-controller: "Iban"
 definitions:
   Error:
@@ -57,6 +57,17 @@ definitions:
       valid:
         type: "boolean"
   inline_response_404:
+    properties:
+      status:
+        type: "string"
+  inline_response_200_1:
+    properties:
+      iban:
+        type: "string"
+        example: "DE44500105175407324931"
+      valid:
+        type: "boolean"
+  inline_response_404_1:
     properties:
       status:
         type: "string"
