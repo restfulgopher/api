@@ -1,5 +1,5 @@
 {
-  "name": "betalotest-api",
+  "name": "restfulgopher-api",
   "version": "1.0.0",
   "description": "This is a sample RESTful API",
   "main": "index.js",

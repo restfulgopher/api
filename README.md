@@ -86,7 +86,7 @@ Run `make help` from the project root to list all available commands:
 
 ```
 ------------------------------------------------------------------------
-BETALOTEST API
+RESTFULGOPHER API
 ------------------------------------------------------------------------
 api/run                        start api, stub_api and nginx as reverse proxy
 api/stop                       stop and remove services containers

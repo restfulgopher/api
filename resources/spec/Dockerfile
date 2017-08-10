@@ -1,6 +1,6 @@
 FROM golang:1.8-stretch
 
-WORKDIR $GOPATH/src/github.com/betalotest/api/swagger/spec/
+WORKDIR $GOPATH/src/github.com/restfulgopher/api/swagger/spec/
 
 ADD swagger/spec/main.go .
 

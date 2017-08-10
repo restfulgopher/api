@@ -24,7 +24,7 @@ resource "digitalocean_droplet" "api" {
       "pip install docker-compose",
       "yum upgrade -y python*",
       "systemctl start docker.service",
-      "wget https://raw.githubusercontent.com/betalotest/api/master/docker-compose.yml",
+      "wget https://raw.githubusercontent.com/restfulgopher/api/master/docker-compose.yml",
       "docker-compose pull api",
       "docker-compose pull stub_api",
       "docker-compose pull spec",

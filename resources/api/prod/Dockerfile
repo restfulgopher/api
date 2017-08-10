@@ -1,6 +1,6 @@
 FROM golang:1.8-stretch
 
-WORKDIR $GOPATH/src/github.com/betalotest/api/
+WORKDIR $GOPATH/src/github.com/restfulgopher/api/
 
 ADD main.go .
 

@@ -5,7 +5,7 @@ services:
   # api test
   test:
     container_name: api-test
-    image: alesr/betalotest-api_test
+    image: alesr/restfulgopher-api_test
     build:
       context: .
       dockerfile: resources/api/test/Dockerfile
@@ -13,7 +13,7 @@ services:
   # api production
   api:
     container_name: api
-    image: alesr/betalotest-api
+    image: alesr/restfulgopher-api
     build:
       context: .
       dockerfile: resources/api/prod/Dockerfile
@@ -21,7 +21,7 @@ services:
   # stub api server
   stub_api:
     container_name: stub
-    image: alesr/betalotest-stub_api
+    image: alesr/restfulgopher-stub_api
     build:
       context: .
       dockerfile: resources/stub/Dockerfile
@@ -29,7 +29,7 @@ services:
   # api spec
   spec:
     container_name: spec
-    image: alesr/betalotest-api-spec
+    image: alesr/restfulgopher-api-spec
     build:
       context: .
       dockerfile: resources/spec/Dockerfile
@@ -44,7 +44,7 @@ services:
   # reverse proxy
   nginx:
     container_name: nginx
-    image: alesr/betalotest-nginx
+    image: alesr/restfulgopher-nginx
     ports:
       - "80:80"
       - "443:443"

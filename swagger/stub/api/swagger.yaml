@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   description: "This is a sample RESTful API"
   version: "1.0.0"
-  title: "BETALOTEST API"
+  title: "RESTFUKGOPHER API"
   contact:
     email: "alessandro.resta@gmail.com"
   license:
