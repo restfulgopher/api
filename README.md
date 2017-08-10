@@ -1,4 +1,4 @@
-# API
+# API [![CircleCI](https://circleci.com/gh/restfulgopher/api.svg?style=svg)](https://circleci.com/gh/restfulgopher/api)
 
 ## WHAT IS
 
