@@ -1,4 +1,4 @@
-# API [![Build Status](https://travis-ci.org/betalotest/api.svg?branch=master)](https://travis-ci.org/betalotest/api)
+# API
 
 ## WHAT IS
 
